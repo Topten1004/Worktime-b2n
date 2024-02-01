@@ -6,7 +6,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "jcp.worktime"
+        applicationId "b2n.worktime"
         minSdk 23
         targetSdk 30
         versionCode 107

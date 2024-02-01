@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = NfcAdapter.getDefaultAdapter(this);
 
         btn = this.findViewById(R.id.Notification);
+        btn.setVisibility(View.GONE);
 
         labCurrentTime = this.findViewById(R.id.lblCurrentTime);
         labPointer = this.findViewById(R.id.pointerName);
@@ -179,11 +180,6 @@ public class MainActivity extends AppCompatActivity {
 
     static String hexTagId;
 
-    public void onClickNotification(View v) {
-        if(!scanEnCours) {
-            ReadingTag(hexTagId); //534E35AF016640
-        }
-    }
     void toogleNfc(Boolean enable) {
         if(enable){
             final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_MUSIC, ToneGenerator.MAX_VOLUME);
@@ -303,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
                             Drawable successDrawable = ContextCompat.getDrawable(this, R.drawable.checksuccess);
 
+                            btn.setVisibility(View.VISIBLE);
                             btn.setForeground(successDrawable);
                             btn.setBackground(null);
 
@@ -313,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
                                     labUserName.setVisibility(View.GONE);
                                     btn.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.check));
                                     btn.setForeground(ContextCompat.getDrawable(MainActivity.this, R.drawable.check));
+                                    btn.setVisibility(View.GONE);
                                 }
                             }, 2000); // Delay for 1 second (2000 milliseconds)
                         }
