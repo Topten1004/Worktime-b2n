@@ -1,0 +1,19 @@
+﻿@using System.Security.Claims
+
+<button type="button" class="rechcollapsible">Recherche</button>
+<div class="rechcontent">
+    <form>
+        <input type="hidden" name="SSN" value="@ViewBag.SSN" />
+        <div class="form-row">
+            <div class="col-2">
+                <label class="control-label my-2">NOM</label>
+                <input id="employeeName" name="employeeName" class="form-control" value="@ViewBag.EmployeeName" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-2 text-center">
+                <input id="btnRechercher" type="submit" value="Rechercher" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

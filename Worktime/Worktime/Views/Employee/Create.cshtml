@@ -1,0 +1,71 @@
+﻿@model Worktime.ViewModel.EmployeeVM
+
+@{
+    ViewData["Title"] = "Création";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Création</h1>
+
+<h4>Employe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SSN" class="control-label">CAFAT</label>
+                <input asp-for="SSN" class="form-control" />
+                <span asp-validation-for="SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag" class="control-label">TAG</label>
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">NOM</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">PRENOM</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label">DATE ENTREE</label>
+                <input asp-for="EntryDate" type="date" class="form-control" />
+                <span asp-validation-for="EntryDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Info" class="control-label">INFO</label>
+                <input asp-for="Info" class="form-control" />
+                <span asp-validation-for="Info" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="WebAccess" class="control-label"></label>
+                <div class="form-check">
+                    <input asp-for="WebAccess" class="form-check-input" type="checkbox" id="flexCheckChecked">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Enable" class="control-label"></label>
+                <div class="form-check">
+                    <input asp-for="Enable" class="form-check-input" type="checkbox" id="flexCheckChecked">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary my-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>

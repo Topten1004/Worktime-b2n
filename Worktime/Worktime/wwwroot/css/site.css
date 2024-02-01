@@ -1,0 +1,67 @@
+@media (min-width: 768px) {
+    .my-container {
+        display: flex;
+/*        height: 640px;
+        overflow:scroll;
+*/    }
+}
+
+.my-tbcontainer {
+/*    height: 640px;
+    overflow: scroll;*/
+}
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* styles.css */
+.hidden {
+    display: none;
+}
+#dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#close-dialog {
+    margin-top: 10px;
+}
+
+#settingMail {
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-content {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

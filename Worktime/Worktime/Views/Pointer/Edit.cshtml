@@ -1,0 +1,50 @@
+﻿@model Worktime.Models.Pointer
+
+@{
+    ViewData["Title"] = "Modification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>POINTEUSES</h4>
+<input hidden id="Id" value="@Model.Id" />
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                </div>
+                <input type="text" class="form-control" asp-for="Name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1" asp-for="Code">Code</span>
+                </div>
+                <input type="text" class="form-control" asp-for="Code" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary my-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

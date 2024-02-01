@@ -1,0 +1,15 @@
+﻿@model string[]
+@{
+    ViewData["Title"] = "Erreur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Erreur</h1>
+<div class="row">
+    <div class="col-md-12">
+        <h4>@Model[0]</h4>
+    </div>
+    <div>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Retour</a>
+    </div>
+</div>

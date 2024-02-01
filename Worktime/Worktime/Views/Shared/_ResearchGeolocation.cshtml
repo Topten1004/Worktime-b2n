@@ -1,0 +1,48 @@
+﻿@using System.Security.Claims
+
+<button type="button" class="rechcollapsible">Recherche</button>
+<div class="rechcontent">
+    <div class="form-row" style="display:flex">
+        <div class="col-5">
+            <div style="display:flex">
+                <label class="control-label my-2 p-2">Du</label>
+                <input id="geoBeginDate" value="@ViewBag.geoBeginDate.Date.ToString("yyyy-MM-dd")" name="geoBeginDate" class="form-control m-2" type="date" />
+            </div>
+            <div style="display:flex">
+                <input type="text" id="beginTimePickerInput" name="Time" style="margin-left:30px !important" class="form-control timepicker m-2 p-2" />
+            </div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5">
+            <div style="display:flex">
+                <label class="control-label my-2 p-2">Au</label>
+                <input id="geoEndDate" value="@ViewBag.geoEndDate.Date.ToString("yyyy-MM-dd")"  name="geoEndDate" class="form-control m-2" type="date" />
+            </div>
+            <div style="display:flex">
+                <input type="text" id="endTimePickerInput" name="Time" style="margin-left:30px !important" class="form-control timepicker m-2 p-2" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row" style="display:flex">
+        <div class="col-5">
+            <div style="display:flex">
+                <label class="control-label my-2 p-2">Terminal</label>
+                @Html.DropDownList("SelectedTerminal", new SelectList(ViewBag.TerminalList as IEnumerable<string>), "Select Terminal", new { @class = "form-control m-2" })
+            </div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5">
+            <div style="display:flex">
+                <label class="control-label my-2 p-2">SSN</label>
+                @Html.DropDownList("SelectedSSN", new SelectList(ViewBag.SSNList as IEnumerable<string>), "Select SSN", new { @class = "form-control m-2" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col p-2 text-center">
+            <input id="btnRechercher" type="submit" value="Rechercher" class="btn btn-primary" />
+        </div>
+    </div>
+</div>

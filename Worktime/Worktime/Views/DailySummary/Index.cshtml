@@ -1,0 +1,70 @@
+﻿@model Worktime.ViewModel.MajVM
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Présents jour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" href="~/css/col-exp-panel.css" />
+}
+
+<h1>Présents jour</h1>
+@await Html.PartialAsync("../Shared/_ResearchEmployee")
+<div class="my-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        EMPLOYEE
+                    </th>
+                    <th>
+                        DURATION
+                    </th>
+                    <th>
+                        ABSENCE/JOUR
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var summary in Model.Summaries)
+                {
+                    <tr>
+                        <td class="@(summary.IsAbsense ? "absense" : "normal")">
+                            @Html.DisplayFor(modelItem => summary.EmployeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => summary.Duration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => summary.Absense)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<style>
+    .out {
+        background: #00ff00
+    }
+    .in {
+        background: #FF8B02
+    }
+    .normal {
+        background: #FFFFFF;
+        width:50%;
+    }
+    .absense {
+        width: 50% !important;
+        background: red !important;
+        color:white !important;
+    }
+</style>
+
+@section Scripts {
+    <script src="~/js/col-exp-panel.js"></script>
+}

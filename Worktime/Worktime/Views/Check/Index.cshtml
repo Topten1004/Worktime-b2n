@@ -1,0 +1,39 @@
+﻿@model Worktime.ViewModel.CheckVM;
+
+@{
+    ViewData["Title"] = "Check";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h3 style="text-align:center">
+        @Html.DisplayFor(model => model.EmployeeName)
+    </h3>
+    <h4 style="text-align:center" id="liveTime">
+
+    </h4>
+    <div style="text-align:center">
+        <a asp-action="Create">
+        @if (Model.Check == 0)
+        {
+           <img src="/img/green.png" />
+        }
+        else
+        {
+           <img src="/img/grey.png" />
+        }
+        </a>
+    </div>
+    <h4 style="text-align:center">
+        Last Check: @Html.DisplayFor(model => model.LastTime)
+    </h4>
+</div>
+<script>
+    $(document).ready(function () {
+        setInterval(function () {
+            var now = new Date();
+            var formattedTime = ("0" + now.getDate()).slice(-2) + '/' + ("0" + (now.getMonth() + 1)).slice(-2) + ' : ' + ("0" + now.getHours()).slice(-2) + ':' + ("0" + now.getMinutes()).slice(-2);
+            $('#liveTime').text(formattedTime);
+        }, 1000); // Execute every 1000 ms = 1 second
+    });
+</script>

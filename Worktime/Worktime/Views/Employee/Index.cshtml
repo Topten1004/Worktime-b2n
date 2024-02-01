@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<Worktime.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Employee</h1>
+<p>
+    <a asp-action="Create">Nouveau</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                CAFAT
+            </th>
+            <th>
+                TAG
+            </th>
+            <th>
+                NOM
+            </th>
+            <th>
+                PRENOM
+            </th>
+            <th>
+                DATE ENTREE
+            </th>
+            <th>
+                INFO
+            </th>
+            <th>
+                DATE SORTIE
+            </th>
+            <th>
+                WEB ACCESS
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="@((item.Enable == true?"out":"normal"))">
+                <td>
+                    @Html.DisplayFor(modelItem => item.SSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @{
+                        string formattedDate = item.EntryDate.ToString("MM/dd/yy");
+                        @formattedDate
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Info)
+                </td>
+                <td>
+                    @if (item.Enable == true)
+                    {
+                        string releaseDate = item.ReleaseDate.HasValue ? item.ReleaseDate.Value.ToString("MM/dd/yy") : "";
+                        @releaseDate
+                    }
+                </td>
+
+                <td>
+                    @if (item.WebAccess == true)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" checked disabled>
+                        </div>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    .normal {
+        background: #FFFFFF
+    }
+
+    .out {
+        width: 50%;
+        background: red;
+        color: white;
+    }
+</style>
+

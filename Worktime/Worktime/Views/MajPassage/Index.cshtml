@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Worktime.ViewModel.PassageVM>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Passage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" href="~/css/col-exp-panel.css" />
+}
+
+<h1>Maj Passage</h1>
+@await Html.PartialAsync("../Shared/_ResearchDate")
+<div class="my-container">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            LOG TIME
+                        </th>
+                        <th>
+                            POINTEUSE
+                        </th>
+                        <th>
+                            NOM
+                        </th>
+                        <th>
+                            PRENOM
+                        </th>
+                        <th>
+                            CAFAT
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@((item.Type == 1?"out":"in"))">
+                            <td>
+                                @{
+                                string formattedDate = item.LogTime.ToString("dd/MM - HH:mm");
+                                @formattedDate
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PointerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-SSN="@item.SSN">
+                                    @Html.DisplayFor(modelItem => item.SSN)
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>
+<div class="pager-container">
+    @await Html.PartialAsync("../Shared/_Pager", new PagerViewModel
+    {
+        CurrentPage = ViewBag.Page,
+        PageSize = 20, // Set your desired page size
+        TotalItems = ViewBag.TotalItems
+    })
+</div>
+<style>
+    .out {
+        background: #00ff00
+    }
+    .in {
+        background: #FF8B02
+    }
+    .normal {
+        background: #FFFFFF;
+        width:50%;
+    }
+    .absense {
+        width: 50%;
+        background: red ;
+        color:white;
+    }
+</style>
+
+@section Scripts {
+    <script src="~/js/col-exp-panel.js"></script>
+}
